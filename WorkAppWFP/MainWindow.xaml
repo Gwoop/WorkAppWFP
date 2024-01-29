@@ -5,17 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:WorkAppWFP"
+        MinHeight="450"
+        MinWidth="800"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Авторизация" Height="450" Width="800" Icon="image/speed_test_computer_pc_time_clock_icon_193930.ico">
     <Window.Background>
         <ImageBrush ImageSource="image/fon.jpg" />
     </Window.Background>
     <Grid>
-        <Button Content="Войти" HorizontalAlignment="Center" Margin="0,288,0,0" VerticalAlignment="Top" Click="Button_Click" Width="70"/>
+        <Button Content="Войти" HorizontalAlignment="Center" Margin="0,288,0,0" VerticalAlignment="Top" Click="Button_Login" Width="70"/>
         <Label Content="Логин" HorizontalAlignment="Left" Margin="372,148,0,0" VerticalAlignment="Top"/>
         <Label Content="Пароль" HorizontalAlignment="Left" Margin="368,217,0,0" VerticalAlignment="Top"/>
-        <PasswordBox x:Name="password" HorizontalAlignment="Center" Margin="0,248,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="login" HorizontalAlignment="Center"  Margin="0,191,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="password" HorizontalAlignment="Center" Margin="0,248,0,0" VerticalAlignment="Top" Width="120" PreviewTextInput="TextValidationTextBox"/>
+        <TextBox x:Name="login" HorizontalAlignment="Center"  Margin="0,191,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" PreviewTextInput="TextValidationTextBox"/>
+        <Button HorizontalAlignment="Left" Margin="692,32,0,0" VerticalAlignment="Top" Height="52" Width="80" Click="Button_Setting">
+            <Image Source="image/Setting.png"></Image>
+        </Button>
 
     </Grid>
 </Window>

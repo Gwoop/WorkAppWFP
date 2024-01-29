@@ -24,10 +24,10 @@ namespace WorkAppWFP
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Logout(object sender, RoutedEventArgs e)
         {
-            var confirmResult = MessageBox.Show("Are you sure to delete this item ??",
-                                     "Confirm Delete!!",
+            var confirmResult = MessageBox.Show("Вы уверенны что хотите выйти",
+                                     "Выход",
                                      MessageBoxButton.YesNo);
             if (confirmResult == MessageBoxResult.Yes)
             {
@@ -42,10 +42,37 @@ namespace WorkAppWFP
             
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Server(object sender, RoutedEventArgs e)
         {
             Server server   = new Server();
             server.Show();
+            this.Close();
+        }
+
+        private void Button_PC(object sender, RoutedEventArgs e)
+        {
+            PC pC = new PC();
+            pC.Show();
+            this.Close();
+        }
+
+        private void Button_Crud(object sender, RoutedEventArgs e)
+        {
+            Crud crud = new Crud();
+            crud.Show();
+            this.Close();
+        }
+
+        private void Button_Setting(object sender, RoutedEventArgs e)
+        {
+            Setting setting = new Setting();
+            setting.Show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            History history = new History();
+            history.Show();
             this.Close();
         }
     }

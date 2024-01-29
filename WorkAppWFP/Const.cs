@@ -8,6 +8,8 @@ namespace WorkAppWFP
 {
     public class Const
     {
-        public const string PathServer = "http://192.168.0.18:8000";
+        public static string PathServer = "http://192.168.0.11:8000";
+        public static string Login = "";
+        public static string Password = "";
     }
 }

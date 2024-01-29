@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Security.Policy;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,6 +28,8 @@ namespace WorkAppWFP
         public MainWindow()
         {
             InitializeComponent();
+            Setting setting = new Setting();
+            setting.Get_Ip();
         }
 
         public class Answer
@@ -34,21 +37,21 @@ namespace WorkAppWFP
             public bool answerclass { get; set; }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {   
-            string URL = Const.PathServer + "/admin/authorization";
-
-
-            string username = login.Text;
-            string passwordstring = password.Password;
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(URL);
-            request.Method = "GET";
-            request.ContentType = "application/json";
+        private void Button_Login(object sender, RoutedEventArgs e)
+        {
             
+            
+            string URL = Const.PathServer + "/admin/authorization";
+            Const.Login = login.Text;
+            Const.Password = password.Password;
 
+            
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(URL);
+                request.Method = "GET";
+                request.ContentType = "application/json";
+            
             string encoded = System.Convert.ToBase64String(Encoding.GetEncoding("ISO-8859-1")
-                                           .GetBytes(username + ":" + passwordstring));
+                                           .GetBytes(Const.Login + ":" + Const.Password));
 
             request.Headers.Add("Authorization", "Basic " + encoded);
            
@@ -64,10 +67,22 @@ namespace WorkAppWFP
                 this.Close();
             }
             catch {
-                MessageBox.Show("Неверный Логин или пароль");
+                MessageBox.Show("Нету подключения к серверу, проверьте данные", "Error",MessageBoxButton.OK);
             }
             
             
+        }
+
+        private void TextValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex(@"[^\w\.@-]");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void Button_Setting(object sender, RoutedEventArgs e)
+        {
+            Setting setting = new Setting();
+            setting.Show();
         }
     }
 }
